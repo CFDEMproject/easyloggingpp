@@ -2,21 +2,21 @@ cmake_minimum_required(VERSION 2.8.7)
 
 project(Easyloggingpp CXX)
 
-macro(require_cpp11)
+macro(require_cpp17)
         if (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} GREATER 3.0)
                 # CMake 3.1 has built-in CXX standard checks.
-                message("-- Setting C++11")
-                set(CMAKE_CXX_STANDARD 11)
+                message("-- Setting C++17")
+                set(CMAKE_CXX_STANDARD 17)
                 set(CMAKE_CXX_STANDARD_REQUIRED on)
         else()
                 if (CMAKE_CXX_COMPILER_ID MATCHES "GCC")
-                    message ("-- GNU CXX (-std=c++11)")
-                    list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
+                    message ("-- GNU CXX (-std=c++17)")
+                    list(APPEND CMAKE_CXX_FLAGS "-std=c++17")
                 elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-                    message ("-- CLang CXX (-std=c++11)")
-                    list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
+                    message ("-- CLang CXX (-std=c++17)")
+                    list(APPEND CMAKE_CXX_FLAGS "-std=c++17")
                 else()
-                    message ("-- Easylogging++ requires C++11. Your compiler does not support it.")
+                    message ("-- Easylogging++ requires C++17 (for Qt6). Your compiler does not support it.")
                 endif()
         endif()
 endmacro()
@@ -55,7 +55,7 @@ if (build_static_lib)
                 add_definitions(-DELPP_UTC_DATETIME)
         endif()
 
-        require_cpp11()
+        require_cpp17()
         add_library(easyloggingpp STATIC src/easylogging++.cc)
         set_property(TARGET easyloggingpp PROPERTY POSITION_INDEPENDENT_CODE ON)
 
@@ -75,8 +75,8 @@ export(PACKAGE ${PROJECT_NAME})
 
 ########################################## Unit Testing ###################################
 if (test)
-    # We need C++11
-    require_cpp11()
+    # We need C++17
+    require_cpp17()
     set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
     find_package (gtest REQUIRED)

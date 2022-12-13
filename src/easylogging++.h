@@ -441,7 +441,6 @@ ELPP_INTERNAL_DEBUGGING_OUT_INFO << ELPP_INTERNAL_DEBUGGING_MSG(internalInfoStre
 #   include <QMap>
 #   include <QQueue>
 #   include <QSet>
-#   include <QLinkedList>
 #   include <QHash>
 #   include <QMultiHash>
 #   include <QStack>
@@ -2998,7 +2997,7 @@ return writeIterator(template_inst.begin(), template_inst.end(), template_inst.s
   inline MessageBuilder& operator<<(const QByteArray& msg) {
     return operator << (QString(msg));
   }
-  inline MessageBuilder& operator<<(const QStringRef& msg) {
+  inline MessageBuilder& operator<<(const QStringView& msg) {
     return operator<<(msg.toString());
   }
   inline MessageBuilder& operator<<(qint64 msg) {
@@ -3026,7 +3025,6 @@ return writeIterator(template_inst.begin(), template_inst.end(), template_inst.s
     return *this;
   }
   ELPP_ITERATOR_CONTAINER_LOG_ONE_ARG(QList)
-  ELPP_ITERATOR_CONTAINER_LOG_ONE_ARG(QVector)
   ELPP_ITERATOR_CONTAINER_LOG_ONE_ARG(QQueue)
   ELPP_ITERATOR_CONTAINER_LOG_ONE_ARG(QSet)
   ELPP_ITERATOR_CONTAINER_LOG_ONE_ARG(QStack)
