@@ -19,6 +19,13 @@ macro(require_cpp17)
                     message ("-- Easylogging++ requires C++17 (for Qt6). Your compiler does not support it.")
                 endif()
         endif()
+
+        # Qt6 on Windows requires this flags.
+        # Qt6::Core defines them, but easyloggingpp does not link to a target (and its interface)
+        if (MSVC)
+            add_compile_options(/Zc:__cplusplus)
+            add_compile_options(/permissive-)
+        endif()
 endmacro()
 
 option(test "Build all tests" OFF)
