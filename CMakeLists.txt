@@ -86,9 +86,8 @@ if (test)
     require_cpp17()
     set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
-    find_package (gtest REQUIRED)
-
-    include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+    find_package (GTest REQUIRED)
+    include_directories (${GTEST_INCLUDE_DIRS})
 
     enable_testing()
 
@@ -106,10 +105,16 @@ if (test)
         ELPP_LOGGING_FLAGS_FROM_ARG
         ELPP_NO_DEFAULT_LOG_FILE
         ELPP_FRESH_LOG_FILE
+        ELPP_STOP_ON_FIRST_ASSERTION
+        ELPP_STL_LOGGING
+        ELPP_FORCE_ENV_VAR_FROM_BASH
+        ELPP_ENABLE_THREADING
+        ELPP_FEATURE_CRASH_LOG
+        ELPP_SYSLOG
     )
 
     # Standard linking to gtest stuff.
-    target_link_libraries(easyloggingpp-unit-tests gtest gtest_main)
+    target_link_libraries(easyloggingpp-unit-tests ${GTEST_BOTH_LIBRARIES})
 
     add_test(NAME easyloggingppUnitTests COMMAND easyloggingpp-unit-tests -v)
 endif()

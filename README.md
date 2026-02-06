@@ -4,8 +4,9 @@
 
 ![banner]
 
-> **Documentation for v9.97.0**
+> **Documentation for v9.97.1**
 
+[![Tests](https://github.com/abumq/easyloggingpp/actions/workflows/run-tests.yml/badge.svg)](https://github.com/abumq/easyloggingpp/actions/workflows/run-tests.yml)
 [![Node Binding Version](https://img.shields.io/github/release/abumq/easyloggingpp.svg)](https://github.com/abumq/easyloggingpp-node/releases/latest)
 [![Version](https://img.shields.io/npm/v/easyloggingpp.svg)](https://www.npmjs.com/package/easyloggingpp)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abumq/easyloggingpp/blob/master/LICENCE)
@@ -99,7 +100,7 @@
 # Overview
 Easylogging++ is single header efficient logging library for C++ applications. It is extremely powerful, highly extendable and configurable to user's requirements. It provides ability to [write your own _sinks_](/samples/send-to-network) (via featured referred as `LogDispatchCallback`). This library is currently used by [hundreds of open-source projects on github](https://github.com/search?q=%22easylogging%2B%2B.h%22&type=Code&utf8=%E2%9C%93) and other open-source source control management sites.
 
-This manual is for Easylogging++ v9.96.7. For other versions please refer to corresponding [release](https://github.com/abumq/easyloggingpp/releases) on github.
+This manual is for Easylogging++ v9.97.1. For other versions please refer to corresponding [release](https://github.com/abumq/easyloggingpp/releases) on github.
 
 > You may also be interested in [Residue](https://github.com/abumq/residue/) logging server.
 
