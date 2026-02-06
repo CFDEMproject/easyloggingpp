@@ -64,17 +64,34 @@ if (build_static_lib)
 
         require_cpp17()
         add_library(easyloggingpp STATIC src/easylogging++.cc)
+        set_property(TARGET easyloggingpp PROPERTY PUBLIC_HEADER src/easylogging++.h)
         set_property(TARGET easyloggingpp PROPERTY POSITION_INDEPENDENT_CODE ON)
 
         target_include_directories(easyloggingpp
             PUBLIC
             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
-            $<INSTALL_INTERFACE:lib>
+            $<INSTALL_INTERFACE:include>
+            )
+        
+
+        install(
+            TARGETS easyloggingpp
+            EXPORT EasyloggingppTargets
+            ARCHIVE DESTINATION lib
+            PUBLIC_HEADER DESTINATION include
+            )
+            
+        include(GNUInstallDirs)
+
+        install(
+	    EXPORT EasyloggingppTargets
+	    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/easyloggingpp
             )
 
-        install(TARGETS
-            easyloggingpp
-            ARCHIVE DESTINATION lib)
+        install(
+	    FILES cmake/easyloggingpp-config.cmake
+            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/easyloggingpp
+            )
 endif()
 
 export(PACKAGE ${PROJECT_NAME})
