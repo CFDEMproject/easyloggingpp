@@ -1,1 +1,1 @@
-include(${CMAKE_CURRENT_LIST_DIR}/EasyloggingTargets.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/EasyloggingppTargets.cmake)
